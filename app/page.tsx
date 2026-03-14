@@ -48,7 +48,8 @@ export default function Home() {
           <Link href="/calculators/electrical">⚡ Electrical</Link>
           <Link href="/calculators/fluid">💧 Fluid</Link>
           <Link href="/calculators/structure">🏗️ Structure</Link>
-          <Link href="/about">ℹ️ About</Link>
+          <Link href="/terms">📄 Terms</Link>
+          <Link href="/privacy">🔒 Privacy</Link>
         </div>
       </nav>
 
