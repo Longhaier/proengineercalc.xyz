@@ -2,7 +2,10 @@
 
 import Link from 'next/link'
 
-export default function CalculatorPage({ title, description }: { title: string, description: string }) {
+export default function CalculatorPage(props: any) {
+  const title = props.title || 'Calculator'
+  const description = props.description || 'Calculator description'
+
   return (
     <>
       <header className="header">
@@ -17,10 +20,8 @@ export default function CalculatorPage({ title, description }: { title: string, 
       <nav className="nav">
         <div className="container nav-inner">
           <Link href="/">Home</Link>
-          <Link href="/calculators/hvac">HVAC</Link>
-          <Link href="/calculators/electrical">Electrical</Link>
-          <Link href="/calculators/fluid">Fluid</Link>
-          <Link href="/calculators/structure">Structure</Link>
+          <Link href="/terms">Terms</Link>
+          <Link href="/privacy">Privacy</Link>
         </div>
       </nav>
 
@@ -37,21 +38,6 @@ export default function CalculatorPage({ title, description }: { title: string, 
             <p style={{ color: 'var(--text-light)' }}>
               This calculator is coming soon. Check back later!
             </p>
-          </div>
-
-          <div className="content-section">
-            <h2>Formula and Principles</h2>
-            <p>Content coming soon...</p>
-          </div>
-
-          <div className="content-section">
-            <h2>User Guide</h2>
-            <p>Content coming soon...</p>
-          </div>
-
-          <div className="content-section">
-            <h2>FAQ</h2>
-            <p>Content coming soon...</p>
           </div>
 
           <div className="disclaimer">
