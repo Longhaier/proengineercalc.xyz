@@ -4,11 +4,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 export default function PowerCalculator() {
-  const [current, setCurrent] = useState<number | ''>('')
-  const [voltage, setVoltage] = useState<number | ''>('')
-  const [power, setPower] = useState<number | ''>('')
-  const [pf, setPf] = useState(0.85)
-  const [phase, setPhase] = useState('single')
+  const [current, setCurrent] = useState<string>('')
+  const [voltage, setVoltage] = useState<string>('')
+  const [power, setPower] = useState<string>('')
+  const [pf, setPf] = useState<number>(0.85)
+  const [phase, setPhase] = useState<string>('single')
   const [results, setResults] = useState<{
     current: number
     voltage: number
@@ -66,7 +66,7 @@ export default function PowerCalculator() {
       <header className="header">
         <div className="container header-content">
           <h1 className="logo">
-            <Link href="/">🔧 ProEngineerCalc</Link>
+            <Link href="/">ProEngineerCalc</Link>
           </h1>
           <p className="tagline">Professional Engineering Calculator Tools</p>
         </div>
@@ -74,18 +74,18 @@ export default function PowerCalculator() {
 
       <nav className="nav">
         <div className="container nav-inner">
-          <Link href="/">🏠 Home</Link>
-          <Link href="/calculators/hvac">🌡️ HVAC</Link>
-          <Link href="/calculators/electrical">⚡ Electrical</Link>
-          <Link href="/calculators/fluid">💧 Fluid</Link>
-          <Link href="/calculators/structure">🏗️ Structure</Link>
+          <Link href="/">Home</Link>
+          <Link href="/calculators/hvac">HVAC</Link>
+          <Link href="/calculators/electrical">Electrical</Link>
+          <Link href="/calculators/fluid">Fluid</Link>
+          <Link href="/calculators/structure">Structure</Link>
         </div>
       </nav>
 
       <main className="container">
         <div className="calculator-container">
           <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>
-            ⚡ Electrical Power Calculator
+            Electrical Power Calculator
           </h1>
 
           <div className="calculator-form">
@@ -115,7 +115,7 @@ export default function PowerCalculator() {
               <input
                 type="number"
                 value={current}
-                onChange={(e) => setCurrent(e.target.value === '' ? '' : Number(e.target.value))}
+                onChange={(e) => setCurrent(e.target.value)}
                 placeholder="Enter current"
               />
             </div>
@@ -125,7 +125,7 @@ export default function PowerCalculator() {
               <input
                 type="number"
                 value={voltage}
-                onChange={(e) => setVoltage(e.target.value === '' ? '' : Number(e.target.value))}
+                onChange={(e) => setVoltage(e.target.value)}
                 placeholder="Enter voltage"
               />
             </div>
@@ -135,7 +135,7 @@ export default function PowerCalculator() {
               <input
                 type="number"
                 value={power}
-                onChange={(e) => setPower(e.target.value === '' ? '' : Number(e.target.value))}
+                onChange={(e) => setPower(e.target.value)}
                 placeholder="Enter power"
               />
             </div>
@@ -159,7 +159,7 @@ export default function PowerCalculator() {
 
             {results && (
               <div className="result-group">
-                <h4>📊 Results</h4>
+                <h4>Results</h4>
                 <div className="result-item">
                   <span className="result-label">Current</span>
                   <span className="result-value">{results.current} A</span>
@@ -181,30 +181,24 @@ export default function PowerCalculator() {
           </div>
 
           <div className="content-section">
-            <h2>📐 Formula and Principles</h2>
+            <h2>Formula and Principles</h2>
             
             <h3>Basic Power Equations</h3>
             
             <h3>Single Phase</h3>
             <div className="formula-box">
-              P = V × I × PF
-              <br />
-              I = P / (V × PF)
-              <br />
-              V = P / (I × PF)
-              <br /><br />
-              S = V × I
+              P = V x I x PF<br/>
+              I = P / (V x PF)<br/>
+              V = P / (I x PF)<br/><br/>
+              S = V x I
             </div>
 
             <h3>Three Phase</h3>
             <div className="formula-box">
-              P = √3 × V_L × I_L × PF
-              <br />
-              I_L = P / (√3 × V_L × PF)
-              <br />
-              V_L = P / (√3 × I_L × PF)
-              <br /><br />
-              S = √3 × V_L × I_L
+              P = sqrt(3) x V_L x I_L x PF<br/>
+              I_L = P / (sqrt(3) x V_L x PF)<br/>
+              V_L = P / (sqrt(3) x I_L x PF)<br/><br/>
+              S = sqrt(3) x V_L x I_L
             </div>
 
             <p>Where:<br/>
@@ -215,16 +209,16 @@ export default function PowerCalculator() {
             S = Apparent Power (VA)</p>
 
             <h3>Understanding Power Factor</h3>
-            <p>Power factor is the ratio of real power to apparent power. It measures how efficiently electrical power is being used:</p>
+            <p>Power factor is the ratio of real power to apparent power:</p>
             <ul>
               <li>PF = 1.0: Perfect (all power is useful)</li>
-              <li>PF < 0.9: Poor (reactive power losses)</li>
-              <li>PF < 0.5: Very poor (significant losses)</li>
+              <li>PF less than 0.9: Poor (reactive power losses)</li>
+              <li>PF less than 0.5: Very poor (significant losses)</li>
             </ul>
           </div>
 
           <div className="content-section">
-            <h2>📖 User Guide</h2>
+            <h2>User Guide</h2>
             
             <h3>How to Use</h3>
             <ol>
@@ -244,36 +238,36 @@ export default function PowerCalculator() {
           </div>
 
           <div className="content-section">
-            <h2>❓ FAQ</h2>
+            <h2>FAQ</h2>
             
             <div className="faq-item">
               <p className="faq-question">Why do I need power factor?</p>
-              <p className="faq-answer">Power factor accounts for reactive power in AC circuits. Motors, transformers, and fluorescent lights create reactive power that doesn't do useful work but causes losses. Using PF gives accurate real power calculations.</p>
+              <p className="faq-answer">Power factor accounts for reactive power in AC circuits. Motors, transformers, and fluorescent lights create reactive power that does not do useful work but causes losses.</p>
             </div>
 
             <div className="faq-item">
-              <p className="faq-question">What's the difference between VA and Watts?</p>
-              <p className="faq-answer">Watts (W) measure actual useful power. VA measures apparent power (current × voltage). For DC systems they're equal. For AC with PF < 1, W < VA.</p>
+              <p className="faq-question">What is the difference between VA and Watts?</p>
+              <p className="faq-answer">Watts (W) measure actual useful power. VA measures apparent power (current x voltage). For DC systems they are equal. For AC with PF less than 1, W is less than VA.</p>
             </div>
 
             <div className="faq-item">
               <p className="faq-question">When should I use three-phase calculations?</p>
-              <p className="faq-answer">Use three-phase for commercial/industrial loads, large motors, and building main service. Most countries use 3-phase for distribution, single-phase for outlets.</p>
+              <p className="faq-answer">Use three-phase for commercial/industrial loads, large motors, and building main service.</p>
             </div>
           </div>
 
           <div className="content-section">
-            <h2>📋 Related Cases</h2>
+            <h2>Related Cases</h2>
             
             <h3>Case 1: Motor Circuit Design</h3>
-            <p>A 10 HP motor runs at 480V, three-phase with PF 0.89 and efficiency 92%. Real power = 10×746/0.92 = 8,109W. Current = 8,109 / (√3 × 480 × 0.89) = 10.9A. Wire should be sized for 125% = 13.6A minimum.</p>
+            <p>A 10 HP motor runs at 480V, three-phase with PF 0.89 and efficiency 92%. Real power = 10x746/0.92 = 8,109W. Current = 8,109 / (sqrt(3) x 480 x 0.89) = 10.9A. Wire should be sized for 125% = 13.6A minimum.</p>
             
             <h3>Case 2: UPS Sizing</h3>
-            <p>Critical load: 5kW servers at 208V single-phase, PF 0.95. Apparent power = 5,000 / 0.95 = 5,263VA. For 30-minute backup at 48V, battery capacity = (5,263 / 48) × 0.5 = 55Ah minimum.</p>
+            <p>Critical load: 5kW servers at 208V single-phase, PF 0.95. Apparent power = 5,000 / 0.95 = 5,263VA. For 30-minute backup at 48V, battery capacity = (5,263 / 48) x 0.5 = 55Ah minimum.</p>
           </div>
 
           <div className="disclaimer">
-            <strong>⚠️ Disclaimer:</strong> All calculations are for reference only. 
+            <strong>Disclaimer:</strong> All calculations are for reference only. 
             Do not use these results as the final basis for engineering design. 
             Consult a licensed electrical engineer for actual installations.
           </div>
@@ -281,8 +275,8 @@ export default function PowerCalculator() {
       </main>
 
       <footer>
-        <div class="container">
-          <p>© 2026 ProEngineerCalc. All rights reserved.</p>
+        <div className="container">
+          <p>2026 ProEngineerCalc. All rights reserved.</p>
         </div>
       </footer>
     </>
