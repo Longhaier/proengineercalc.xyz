@@ -36,7 +36,7 @@ export default function Home() {
           <h1 className="logo">
             <Link href="/">🔧 ProEngineerCalc</Link>
           </h1>
-          <p className="tagline">专业工程师计算工具平台</p>
+          <p className="tagline">Professional Engineering Calculator Toolbox</p>
         </div>
       </header>
 
