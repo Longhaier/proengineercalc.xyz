@@ -30,7 +30,7 @@ export default function CableAmpacity() {
       <header className="header">
         <div className="container header-content">
           <h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1>
-          <p className="tagline">Professional Engineering Calculator Tools</p>
+          <p className="tagline">Professional Engineering Calculator Toolbox</p>
         </div>
       </header>
 

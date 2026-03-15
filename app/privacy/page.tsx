@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Privacy Policy - ProEngineerCalc',
-  description: 'Privacy Policy for ProEngineerCalc - Professional Engineering Calculator Tools',
+  description: 'Privacy Policy for ProEngineerCalc - Professional Engineering Calculator Toolbox',
 }
 
 export default function Privacy() {
@@ -13,7 +13,7 @@ export default function Privacy() {
           <h1 className="logo">
             <Link href="/">ProEngineerCalc</Link>
           </h1>
-          <p className="tagline">Professional Engineering Calculator Tools</p>
+          <p className="tagline">Professional Engineering Calculator Toolbox</p>
         </div>
       </header>
 

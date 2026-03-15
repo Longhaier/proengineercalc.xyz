@@ -1,6 +1,6 @@
 # ProEngineerCalc
 
-Professional engineering calculator tools website built with Next.js.
+Professional engineering calculator toolbox website built with Next.js.
 
 ## Features
 

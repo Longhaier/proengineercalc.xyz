@@ -3,12 +3,12 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'ProEngineerCalc - 专业工程师计算工具平台',
-  description: 'Free online engineering calculator tools for HVAC, electrical, fluid mechanics, and structural engineering. Calculate dew point, cable ampacity, psychrometric properties and more.',
+  description: 'Free online engineering calculator toolbox for HVAC, electrical, fluid mechanics, and structural engineering. Calculate dew point, cable ampacity, psychrometric properties and more.',
   keywords: 'engineering calculator, HVAC calculator, electrical calculator, dew point calculator, cable ampacity, psychrometric chart',
   authors: [{ name: 'ProEngineerCalc' }],
   openGraph: {
     title: 'ProEngineerCalc - 专业工程师计算工具平台',
-    description: 'Free online engineering calculator tools for professionals',
+    description: 'Free online engineering calculator toolbox for professionals',
     type: 'website',
   },
 }
