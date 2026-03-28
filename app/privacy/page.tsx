@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: '隐私政策 - 工程师计算器',
-  description: '工程师计算器隐私政策 - 专业工程师计算工具箱',
+  title: '隐私政策 - 智效厂务工程计算器',
+  description: '智效厂务工程计算器隐私政策 - 专业工程师计算工具箱',
 }
 
 export default function Privacy() {
@@ -11,7 +11,7 @@ export default function Privacy() {
       <header className="header">
         <div className="container header-content">
           <h1 className="logo">
-            <Link href="/">🔧 工程师计算器</Link>
+            <Link href="/">🔧 智效厂务工程计算器</Link>
           </h1>
           <p className="tagline">专业工程师计算工具箱</p>
         </div>
@@ -41,7 +41,7 @@ export default function Privacy() {
             </p>
 
             <h3>1. 我们收集的信息</h3>
-            <p>工程师计算器是一个信息类网站。我们不会通过本网站收集您的个人信息。所有计算都在您的浏览器本地执行，不会传输到我们的服务器。</p>
+            <p>智效厂务工程计算器是一个信息类网站。我们不会通过本网站收集您的个人信息。所有计算都在您的浏览器本地执行，不会传输到我们的服务器。</p>
 
             <h3>2. 本地存储</h3>
             <p>我们可能会使用本地存储来保存您的计算历史和偏好设置，以提供更好的用户体验。这些数据仅存储在您的设备上，不会传输给我们。</p>
@@ -77,7 +77,7 @@ export default function Privacy() {
 
       <footer>
         <div className="container">
-          <p>© 2026 工程师计算器. 保留所有权利.</p>
+          <p>© 2026 智效厂务工程计算器. 保留所有权利.</p>
         </div>
       </footer>
     </>

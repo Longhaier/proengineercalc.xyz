@@ -60,7 +60,7 @@ export default function DewPointCalculator() {
       <header className="header">
         <div className="container header-content">
           <h1 className="logo">
-            <Link href="/">🔧 工程师计算器</Link>
+            <Link href="/">🔧 智效厂务工程计算器</Link>
           </h1>
           <p className="tagline">专业工程师计算工具箱</p>
         </div>
@@ -245,7 +245,7 @@ export default function DewPointCalculator() {
 
       <footer>
         <div className="container">
-          <p>© 2026 工程师计算器</p>
+          <p>© 2026 智效厂务工程计算器</p>
         </div>
       </footer>
     </>

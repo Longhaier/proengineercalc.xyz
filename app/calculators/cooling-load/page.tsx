@@ -18,7 +18,7 @@ export default function CoolingLoad() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 智效厂务工程计算器</Link></h1></div></header>
       <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/hvac">🌡️ 暖通空调</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
@@ -37,7 +37,7 @@ export default function CoolingLoad() {
           <div className="disclaimer"><strong>免责声明：</strong>仅供参考。</div>
         </div>
       </main>
-      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
+      <footer><div className="container"><p>© 2026 智效厂务工程计算器</p></div></footer>
     </>
   )
 }
