@@ -3,13 +3,13 @@ import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
-  title: 'ProEngineerCalc - Professional Engineering Calculator Toolbox',
-  description: 'Free online engineering calculator toolbox for HVAC, electrical, fluid mechanics, and structural engineering. Calculate dew point, cable ampacity, psychrometric properties and more.',
-  keywords: 'engineering calculator, HVAC calculator, electrical calculator, dew point calculator, cable ampacity, psychrometric chart',
-  authors: [{ name: 'ProEngineerCalc' }],
+  title: '工程师计算器 - 专业工程师计算工具箱',
+  description: '免费在线工程师计算工具箱，包含暖通空调、电气工程、流体力学和结构工程计算器。支持露点计算、电缆载流量、湿空气参数等多种工程计算。',
+  keywords: '工程师计算器, 暖通空调计算器, 电气计算器, 露点计算器, 电缆载流量, 湿空气计算器, 工程计算工具',
+  authors: [{ name: '工程师计算器' }],
   openGraph: {
-    title: 'ProEngineerCalc - Professional Engineering Calculator Toolbox',
-    description: 'Free online engineering calculator toolbox for professionals',
+    title: '工程师计算器 - 专业工程师计算工具箱',
+    description: '免费在线工程师计算工具箱，为专业人员提供精准计算',
     type: 'website',
   },
 }
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <head>
         <meta name="google-site-verification" content="7p6E6l3bA-XCHPdkW7jBefcSPlzYNp3TxjMck2AuawE" />
         <link rel="manifest" href="/manifest.json" />

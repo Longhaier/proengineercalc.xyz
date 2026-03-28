@@ -2,28 +2,28 @@ import Link from 'next/link'
 
 const calculators = {
   hvac: [
-    { slug: 'dewpoint', title: 'Dew Point Calculator', desc: 'Calculate dew point temperature from altitude, temperature, and humidity' },
-    { slug: 'psychrometric', title: 'Psychrometric Calculator', desc: 'Calculate enthalpy, humidity ratio, and other air properties' },
-    { slug: 'duct-velocity', title: 'Duct Velocity Calculator', desc: 'Calculate air velocity in rectangular and round ducts' },
-    { slug: 'cooling-load', title: 'Cooling Load Estimator', desc: 'Estimate building cooling load quickly' },
-    { slug: 'pump-head', title: 'Pump Head Calculator', desc: 'Calculate required pump head for HVAC systems' },
+    { slug: 'dewpoint', title: '露点计算器', desc: '根据海拔、温度和湿度计算露点温度' },
+    { slug: 'psychrometric', title: '湿空气性质计算器', desc: '计算焓值、含湿量及空气其他参数' },
+    { slug: 'duct-velocity', title: '风管风速计算器', desc: '计算矩形和圆形风管内的空气流速' },
+    { slug: 'cooling-load', title: '冷负荷估算器', desc: '快速估算建筑冷负荷' },
+    { slug: 'pump-head', title: '水泵扬程计算器', desc: '计算暖通空调系统所需的水泵扬程' },
   ],
   electrical: [
-    { slug: 'power', title: 'Power Calculator', desc: 'Calculate power, current, voltage from any two inputs' },
-    { slug: 'voltage-drop', title: 'Voltage Drop Calculator', desc: 'Calculate voltage drop in electrical conductors' },
-    { slug: 'cable-ampacity', title: 'Cable Ampacity Calculator', desc: 'Calculate cable current carrying capacity' },
-    { slug: 'illuminance', title: 'Illuminance Calculator', desc: 'Calculate lighting levels for indoor spaces' },
-    { slug: 'battery-capacity', title: 'Battery Capacity Calculator', desc: 'Calculate battery size for backup power' },
+    { slug: 'power', title: '功率计算器', desc: '根据任意两个已知值计算功率、电流、电压' },
+    { slug: 'voltage-drop', title: '电压降计算器', desc: '计算电力线路的电压损失' },
+    { slug: 'cable-ampacity', title: '电缆载流量计算器', desc: '计算电缆的安全载流量' },
+    { slug: 'illuminance', title: '照度计算器', desc: '计算室内照明水平' },
+    { slug: 'battery-capacity', title: '蓄电池容量计算器', desc: '计算备用电源的电池容量' },
   ],
   fluid: [
-    { slug: 'pipe-pressure', title: 'Pipe Pressure Loss', desc: 'Calculate pressure drop in pipe systems' },
-    { slug: 'flow-conversion', title: 'Flow Rate Converter', desc: 'Convert between GPM, L/s, m³/h' },
-    { slug: 'reynolds', title: 'Reynolds Number Calculator', desc: 'Calculate Reynolds number for pipe flow' },
+    { slug: 'pipe-pressure', title: '管道压力损失计算器', desc: '计算管道系统的压力降' },
+    { slug: 'flow-conversion', title: '流量单位换算', desc: 'GPM、L/s、m³/h 之间互转' },
+    { slug: 'reynolds', title: '雷诺数计算器', desc: '计算管道流动的雷诺数' },
   ],
   structure: [
-    { slug: 'concrete-mix', title: 'Concrete Mix Calculator', desc: 'Calculate concrete mix proportions' },
-    { slug: 'beam-load', title: 'Beam Load Calculator', desc: 'Calculate beam deflection and stress' },
-    { slug: 'unit-converter', title: 'Unit Converter', desc: 'Convert between engineering units' },
+    { slug: 'concrete-mix', title: '混凝土配比计算器', desc: '计算混凝土配合比' },
+    { slug: 'beam-load', title: '梁荷载计算器', desc: '计算梁的挠度和应力' },
+    { slug: 'unit-converter', title: '单位换算器', desc: '工程单位之间的换算' },
   ],
 }
 
@@ -34,22 +34,22 @@ export default function Home() {
       <header className="header">
         <div className="container header-content">
           <h1 className="logo">
-            <Link href="/">🔧 ProEngineerCalc</Link>
+            <Link href="/">🔧 工程师计算器</Link>
           </h1>
-          <p className="tagline">Professional Engineering Calculator Toolbox</p>
+          <p className="tagline">专业工程师计算工具箱</p>
         </div>
       </header>
 
       {/* Navigation */}
       <nav className="nav">
         <div className="container nav-inner">
-          <Link href="/" className="active">🏠 Home</Link>
-          <Link href="/calculators/hvac">🌡️ HVAC</Link>
-          <Link href="/calculators/electrical">⚡ Electrical</Link>
-          <Link href="/calculators/fluid">💧 Fluid</Link>
-          <Link href="/calculators/structure">🏗️ Structure</Link>
-          <Link href="/terms">📄 Terms</Link>
-          <Link href="/privacy">🔒 Privacy</Link>
+          <Link href="/" className="active">🏠 首页</Link>
+          <Link href="/calculators/hvac">🌡️ 暖通空调</Link>
+          <Link href="/calculators/electrical">⚡ 电气工程</Link>
+          <Link href="/calculators/fluid">💧 流体力学</Link>
+          <Link href="/calculators/structure">🏗️ 结构工程</Link>
+          <Link href="/terms">📄 使用条款</Link>
+          <Link href="/privacy">🔒 隐私政策</Link>
         </div>
       </nav>
 
@@ -57,7 +57,7 @@ export default function Home() {
       <main className="container">
         {/* HVAC Section */}
         <section className="category-section">
-          <h2 className="category-title">🌡️ HVAC & Refrigeration</h2>
+          <h2 className="category-title">🌡️ 暖通空调与制冷</h2>
           <div className="calculator-grid">
             {calculators.hvac.map((calc) => (
               <Link 
@@ -74,7 +74,7 @@ export default function Home() {
 
         {/* Electrical Section */}
         <section className="category-section">
-          <h2 className="category-title">⚡ Electrical Engineering</h2>
+          <h2 className="category-title">⚡ 电气工程</h2>
           <div className="calculator-grid">
             {calculators.electrical.map((calc) => (
               <Link 
@@ -91,7 +91,7 @@ export default function Home() {
 
         {/* Fluid Section */}
         <section className="category-section">
-          <h2 className="category-title">💧 Fluid Mechanics</h2>
+          <h2 className="category-title">💧 流体力学</h2>
           <div className="calculator-grid">
             {calculators.fluid.map((calc) => (
               <Link 
@@ -108,7 +108,7 @@ export default function Home() {
 
         {/* Structure Section */}
         <section className="category-section">
-          <h2 className="category-title">🏗️ Structural Engineering</h2>
+          <h2 className="category-title">🏗️ 结构工程</h2>
           <div className="calculator-grid">
             {calculators.structure.map((calc) => (
               <Link 
@@ -125,16 +125,16 @@ export default function Home() {
 
         {/* Disclaimer */}
         <div className="disclaimer">
-          <strong>⚠️ Disclaimer:</strong> All calculations on this website are for reference only. 
-          Do not use these results as the final basis for engineering design or construction. 
-          Please consult a licensed professional engineer for actual engineering decisions.
+          <strong>⚠️ 免责声明：</strong>本网站所有计算结果仅供参照之用。
+          请勿将计算结果作为工程设计或施工的最终依据。
+          如需进行实际工程项目，请咨询有执照的专业工程师。
         </div>
       </main>
 
       {/* Footer */}
       <footer>
         <div className="container">
-          <p>© 2026 ProEngineerCalc. All rights reserved.</p>
+          <p>© 2026 工程师计算器. 保留所有权利.</p>
         </div>
       </footer>
     </>
