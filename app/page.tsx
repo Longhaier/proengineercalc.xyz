@@ -34,7 +34,7 @@ export default function Home() {
       <header className="header">
         <div className="container header-content">
           <h1 className="logo">
-            <Link href="/">🔧 工程师计算器</Link>
+            <Link href="/">🔧 智效厂务工程计算器</Link>
           </h1>
           <p className="tagline">专业工程师计算工具箱</p>
         </div>
@@ -129,12 +129,23 @@ export default function Home() {
           请勿将计算结果作为工程设计或施工的最终依据。
           如需进行实际工程项目，请咨询有执照的专业工程师。
         </div>
+
+        {/* WeChat QR Code */}
+        <div style={{ textAlign: 'center', margin: '2rem 0', padding: '2rem', background: '#f0f9ff', borderRadius: '12px' }}>
+          <h3 style={{ marginBottom: '1rem', color: 'var(--text)' }}>关注公众号</h3>
+          <p style={{ color: 'var(--text-light)', marginBottom: '1.5rem', fontSize: '0.875rem' }}>扫码关注「智效厂务」，获取更多厂务技术文章</p>
+          <img 
+            src="/wechat-qr.jpg" 
+            alt="智效厂务公众号二维码" 
+            style={{ width: '200px', height: '200px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} 
+          />
+        </div>
       </main>
 
       {/* Footer */}
       <footer>
         <div className="container">
-          <p>© 2026 工程师计算器. 保留所有权利.</p>
+          <p>© 2026 智效厂务工程计算器. 保留所有权利.</p>
         </div>
       </footer>
     </>
