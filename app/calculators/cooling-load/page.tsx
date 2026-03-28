@@ -18,26 +18,26 @@ export default function CoolingLoad() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/hvac">HVAC</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/hvac">🌡️ 暖通空调</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>Cooling Load Estimator</h1>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>冷负荷估算器</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Floor Area (m²)</label><input type="number" value={area} onChange={(e) => setArea(e.target.value)} /></div>
-            <div className="form-group"><label>Ceiling Height (m)</label><input type="number" value={height} onChange={(e) => setHeight(e.target.value)} /></div>
-            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>Calculate</button>
+            <div className="form-group"><label>房间面积 (m²)</label><input type="number" value={area} onChange={(e) => setArea(e.target.value)} /></div>
+            <div className="form-group"><label>层高 (m)</label><input type="number" value={height} onChange={(e) => setHeight(e.target.value)} /></div>
+            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>计算</button>
             {result && (
               <div className="result-group">
-                <div className="result-item"><span className="result-label">Cooling Load</span><span className="result-value">{result.watts} W</span></div>
-                <div className="result-item"><span className="result-label">Refrigeration Tons</span><span className="result-value">{result.tons} RT</span></div>
+                <div className="result-item"><span className="result-label">冷负荷</span><span className="result-value">{result.watts} W</span></div>
+                <div className="result-item"><span className="result-label">冷吨</span><span className="result-value">{result.tons} RT</span></div>
               </div>
             )}
           </div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> Reference only.</div>
+          <div className="disclaimer"><strong>免责声明：</strong>仅供参考。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

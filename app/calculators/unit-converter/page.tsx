@@ -31,26 +31,26 @@ export default function UnitConverter() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/structure">Structure</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/structure">🏗️ 结构工程</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>Unit Converter</h1>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>单位换算器</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Value</label><input type="number" value={value} onChange={(e) => setValue(e.target.value)} /></div>
-            <div className="form-group"><label>Category</label><select value={category} onChange={(e) => setCategory(e.target.value)}><option value="length">Length</option><option value="mass">Mass</option><option value="pressure">Pressure</option><option value="temperature">Temperature</option></select></div>
-            <div className="form-group"><label>From</label><select value={from} onChange={(e) => setFrom(e.target.value)}>{Object.keys(units[category] || {}).map(u => <option key={u} value={u}>{u}</option>)}</select></div>
-            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>Convert</button>
+            <div className="form-group"><label>数值</label><input type="number" value={value} onChange={(e) => setValue(e.target.value)} /></div>
+            <div className="form-group"><label>类别</label><select value={category} onChange={(e) => setCategory(e.target.value)}><option value="length">长度</option><option value="mass">质量</option><option value="pressure">压力</option><option value="temperature">温度</option></select></div>
+            <div className="form-group"><label>源单位</label><select value={from} onChange={(e) => setFrom(e.target.value)}>{Object.keys(units[category] || {}).map(u => <option key={u} value={u}>{u}</option>)}</select></div>
+            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>换算</button>
             {result && (
               <div className="result-group">
                 {Object.entries(result).map(([k, v]) => <div key={k} className="result-item"><span className="result-label">{k}</span><span className="result-value">{String(v)}</span></div>)}
               </div>
             )}
           </div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> Reference only.</div>
+          <div className="disclaimer"><strong>免责声明：</strong>仅供参考。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

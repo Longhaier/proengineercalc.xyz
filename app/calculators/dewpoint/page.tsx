@@ -3,20 +3,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-// Psychrometric calculation functions
 function calculateDewPoint(tempC: number, humidity: number, altitude: number): number {
-  // Calculate atmospheric pressure based on altitude (meters)
   const pressure = 101.325 * Math.pow((1 - 2.25577e-5 * altitude), 5.25588)
-  
-  // Saturation vapor pressure
   const satVapor = 6.1078 * Math.pow(10, (7.5 * tempC / (tempC + 237.3)))
-  
-  // Actual vapor pressure
   const actualVapor = satVapor * humidity / 100
-  
-  // Dew point (inverse of Magnus formula)
   const dewPoint = 237.3 * Math.log10(actualVapor / 6.1078) / (7.5 - Math.log10(actualVapor / 6.1078))
-  
   return Math.round(dewPoint * 10) / 10
 }
 
@@ -26,12 +17,10 @@ function calculateWetBulb(tempC: number, humidity: number, pressure: number): nu
              Math.atan(humidity - 1.676331) + 
              0.00391838 * Math.pow(humidity, 1.5) * Math.atan(0.0231014 * humidity) - 
              4.686035
-  
   return Math.round(tw * 10) / 10
 }
 
 function calculateEnthalpy(tempC: number, humidity: number): number {
-  // Enthalpy in kJ/kg dry air
   const ws = 0.622 * (6.1078 * Math.pow(10, (7.5 * tempC / (tempC + 237.3))) * humidity / 100) / 101.325
   const h = 1.005 * tempC + ws * (2501 + 1.86 * tempC)
   return Math.round(h * 10) / 10
@@ -68,208 +57,195 @@ export default function DewPointCalculator() {
 
   return (
     <>
-      {/* Header */}
       <header className="header">
         <div className="container header-content">
           <h1 className="logo">
-            <Link href="/">🔧 ProEngineerCalc</Link>
+            <Link href="/">🔧 工程师计算器</Link>
           </h1>
-          <p className="tagline">Professional Engineering Calculator Toolbox</p>
+          <p className="tagline">专业工程师计算工具箱</p>
         </div>
       </header>
 
-      {/* Navigation */}
       <nav className="nav">
         <div className="container nav-inner">
-          <Link href="/">🏠 Home</Link>
-          <Link href="/calculators/hvac">🌡️ HVAC</Link>
-          <Link href="/calculators/electrical">⚡ Electrical</Link>
-          <Link href="/calculators/fluid">💧 Fluid</Link>
-          <Link href="/calculators/structure">🏗️ Structure</Link>
+          <Link href="/">🏠 首页</Link>
+          <Link href="/calculators/hvac">🌡️ 暖通空调</Link>
+          <Link href="/calculators/electrical">⚡ 电气工程</Link>
+          <Link href="/calculators/fluid">💧 流体力学</Link>
+          <Link href="/calculators/structure">🏗️ 结构工程</Link>
         </div>
       </nav>
 
       <main className="container">
         <div className="calculator-container">
           <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>
-            🌡️ Dew Point & Psychrometric Calculator
+            🌡️ 露点与湿空气计算器
           </h1>
           
-          {/* Calculator Form */}
           <div className="calculator-form">
             <div className="form-group">
-              <label>Altitude (meters)</label>
+              <label>海拔 (m)</label>
               <input
                 type="number"
                 value={altitude}
                 onChange={(e) => setAltitude(Number(e.target.value))}
-                placeholder="Enter altitude"
+                placeholder="输入海拔"
               />
-              <p className="hint">Enter elevation above sea level (0 for sea level)</p>
+              <p className="hint">输入海拔高度（0为海平面）</p>
             </div>
 
             <div className="form-group">
-              <label>Temperature (°C)</label>
+              <label>温度 (°C)</label>
               <input
                 type="number"
                 value={temperature}
                 onChange={(e) => setTemperature(Number(e.target.value))}
-                placeholder="Enter temperature"
+                placeholder="输入温度"
               />
             </div>
 
             <div className="form-group">
-              <label>Relative Humidity (%)</label>
+              <label>相对湿度 (%)</label>
               <input
                 type="number"
                 value={humidity}
                 onChange={(e) => setHumidity(Number(e.target.value))}
                 min={0}
                 max={100}
-                placeholder="Enter humidity"
+                placeholder="输入湿度"
               />
             </div>
 
             {results && (
               <div className="result-group">
-                <h4>📊 Results</h4>
+                <h4>📊 计算结果</h4>
                 <div className="result-item">
-                  <span className="result-label">Dew Point Temperature</span>
+                  <span className="result-label">露点温度</span>
                   <span className="result-value">{results.dewPoint} °C</span>
                 </div>
                 <div className="result-item">
-                  <span className="result-label">Wet Bulb Temperature</span>
+                  <span className="result-label">湿球温度</span>
                   <span className="result-value">{results.wetBulb} °C</span>
                 </div>
                 <div className="result-item">
-                  <span className="result-label">Enthalpy</span>
+                  <span className="result-label">焓值</span>
                   <span className="result-value">{results.enthalpy} kJ/kg</span>
                 </div>
                 <div className="result-item">
-                  <span className="result-label">Humidity Ratio</span>
+                  <span className="result-label">含湿量</span>
                   <span className="result-value">{results.humidityRatio} kg/kg</span>
                 </div>
                 <div className="result-item">
-                  <span className="result-label">Atmospheric Pressure</span>
+                  <span className="result-label">大气压力</span>
                   <span className="result-value">{results.pressure} kPa</span>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Formula Explanation */}
           <div className="content-section">
-            <h2>📐 Formula and Principles</h2>
+            <h2>📐 公式与原理</h2>
             
-            <h3>What is Dew Point?</h3>
-            <p>Dew point is the temperature to which air must be cooled to become saturated with water vapor. When air is cooled below its dew point, condensation occurs - this is why water droplets form on cold surfaces.</p>
+            <h3>什么是露点？</h3>
+            <p>露点是空气冷却到饱和（相对湿度100%）时的温度。当空气冷却到露点以下，水蒸气会凝结成水滴。这就是为什么冷表面会出现凝水。</p>
             
-            <h3>Magnus Formula</h3>
-            <p>The dew point is calculated using the Magnus formula, which relates saturation vapor pressure to temperature:</p>
+            <h3> Magnus 公式</h3>
+            <p>露点计算使用 Magnus 公式，建立饱和水蒸气压与温度的关系：</p>
             <div className="formula-box">
               γ(T,RH) = ln(RH/100) + (17.27T / (T + 237.3))
               <br />
               Td = (237.3 × γ) / (17.27 - γ)
               <br /><br />
-              Where:
-              <br />T = Temperature (°C)
-              <br />RH = Relative Humidity (%)
-              <br />Td = Dew Point Temperature (°C)
+              其中:
+              <br />T = 温度 (°C)
+              <br />RH = 相对湿度 (%)
+              <br />Td = 露点温度 (°C)
             </div>
 
-            <h3>Atmospheric Pressure Correction</h3>
-            <p>For locations at different altitudes, atmospheric pressure must be calculated using the barometric formula:</p>
+            <h3>海拔修正</h3>
+            <p>不同海拔的大气压力不同，需用气压公式计算：</p>
             <div className="formula-box">
               P = P₀ × (1 - 2.25577 × 10⁻⁵ × h)^5.25588
               <br /><br />
-              Where:
-              <br />P = Atmospheric pressure at altitude h
-              <br />P₀ = Sea level pressure (101.325 kPa)
-              <br />h = Altitude in meters
+              其中:
+              <br />P = 海拔h处的大气压力
+              <br />P₀ = 海平面压力 (101.325 kPa)
+              <br />h = 海拔（米）
             </div>
 
-            <h3>Wet Bulb Temperature</h3>
-            <p>The wet bulb temperature is the lowest temperature to which air can be cooled by evaporating water at constant pressure. It's crucial for HVAC system design and cooling tower performance.</p>
+            <h3>湿球温度</h3>
+            <p>湿球温度是空气在恒定压力下通过蒸发水所能冷却到的最低温度。对冷却塔性能和 HVAC 系统设计至关重要。</p>
           </div>
 
-          {/* User Guide */}
           <div className="content-section">
-            <h2>📖 User Guide</h2>
+            <h2>📖 使用说明</h2>
             
-            <h3>Step 1: Enter Altitude</h3>
-            <p>Input your location's elevation above sea level in meters. If you're at sea level, enter 0. Common altitudes: Denver (1609m), Mexico City (2240m), Lhasa (3650m).</p>
+            <h3>第一步：输入海拔</h3>
+            <p>输入当地海拔（米）。海平面输入0。常见海拔：成都约500m，昆明约1900m。</p>
             
-            <h3>Step 2: Enter Temperature</h3>
-            <p>Input the ambient air temperature in Celsius. This is typically the dry bulb temperature measured by a standard thermometer.</p>
+            <h3>第二步：输入温度</h3>
+            <p>输入干球温度（°C），即普通温度计测量的空气温度。</p>
             
-            <h3>Step 3: Enter Relative Humidity</h3>
-            <p>Input the relative humidity percentage (0-100%). You can measure this with a hygrometer or obtain from local weather data.</p>
+            <h3>第三步：输入相对湿度</h3>
+            <p>输入相对湿度百分比（0-100%），可用湿度计测量或查询当地天气数据。</p>
             
-            <h3>Step 4: Interpret Results</h3>
+            <h3>第四步：解读结果</h3>
             <ul>
-              <li><strong>Dew Point:</strong> Below 13°C = comfortable, Above 21°C = sticky/humid</li>
-              <li><strong>Wet Bulb:</strong> Key for evaporative cooling systems</li>
-              <li><strong>Enthalpy:</strong> Total heat content of air (kJ/kg)</li>
-              <li><strong>Humidity Ratio:</strong> Mass of water per kg of dry air</li>
+              <li><strong>露点：</strong>低于13°C = 舒适，21°C以上 = 闷热潮湿</li>
+              <li><strong>湿球：</strong>蒸发冷却系统的关键参数</li>
+              <li><strong>焓值：</strong>空气的总热含量 (kJ/kg)</li>
+              <li><strong>含湿量：</strong>每千克干空气中所含水蒸气的质量</li>
             </ul>
           </div>
 
-          {/* FAQ */}
           <div className="content-section">
-            <h2>❓ Frequently Asked Questions</h2>
+            <h2>❓ 常见问题</h2>
             
             <div className="faq-item">
-              <p className="faq-question">Why is dew point important for HVAC?</p>
-              <p className="faq-answer">Dew point determines when condensation occurs. In HVAC, it helps size dehumidification equipment, prevent mold growth, and ensure occupant comfort. When indoor surface temperatures fall below dew point, condensation and mold become problems.</p>
+              <p className="faq-question">露点对暖通空调为什么重要？</p>
+              <p className="faq-answer">露点决定何时产生凝水。在暖通空调中，它有助于选型除湿设备、防止霉菌生长、确保人体舒适度。当室内表面温度低于露点时，就会出现凝水和发霉问题。</p>
             </div>
             
             <div className="faq-item">
-              <p className="faq-question">What's a comfortable dew point range?</p>
-              <p className="faq-answer">Below 13°C (55°F) is comfortable for most people. 13-21°C (55-70°F) feels increasingly humid. Above 21°C (70°F) feels very sticky and uncomfortable.</p>
+              <p className="faq-question">舒适的露点范围是多少？</p>
+              <p className="faq-answer">低于13°C对大多数人来说舒适。13-21°C会感觉越来越潮湿。超过21°C会感觉非常闷热不舒服。</p>
             </div>
             
             <div className="faq-item">
-              <p className="faq-question">How does altitude affect dew point?</p>
-              <p className="faq-answer">At higher altitudes, lower atmospheric pressure means air can hold less moisture. This generally results in lower dew points, but the relationship is non-linear. Our calculator automatically accounts for altitude effects on atmospheric pressure.</p>
+              <p className="faq-question">海拔如何影响露点？</p>
+              <p className="faq-answer">海拔越高，气压越低，空气能容纳的水分越少。这通常导致露点降低，但关系是非线性的。本计算器自动修正海拔对气压的影响。</p>
             </div>
             
             <div className="faq-item">
-              <p className="faq-question">What's the difference between dew point and wet bulb?</p>
-              <p className="faq-answer">Dew point is the temperature at which air becomes saturated (condensation occurs). Wet bulb is the lowest temperature achievable through evaporative cooling. Wet bulb is always lower than or equal to dry bulb temperature.</p>
+              <p className="faq-question">露点和湿球温度有什么区别？</p>
+              <p className="faq-answer">露点是空气达到饱和（产生凝结）的温度。湿球温度是通过蒸发冷却能达到的最低温度。湿球温度始终低于或等于干球温度。</p>
             </div>
             
             <div className="faq-item">
-              <p className="faq-question">How accurate is this calculator?</p>
-              <p className="faq-answer">This calculator uses the standard Magnus formula and barometric formula, providing accuracy within ±0.5°C for most conditions. For precise engineering calculations, verify with professional software or psychrometric charts.</p>
+              <p className="faq-question">这个计算器准吗？</p>
+              <p className="faq-answer">本计算器使用标准 Magnus 公式和气压公式，在大多数条件下精度在 ±0.5°C 以内。对于精确的工程计算，请用专业软件或湿空气图表验证。</p>
             </div>
           </div>
 
-          {/* Related Cases */}
           <div className="content-section">
-            <h2>📋 Related Cases</h2>
+            <h2>📋 案例</h2>
             
-            <h3>Case 1: Cleanroom Design</h3>
-            <p>In semiconductor cleanrooms, maintaining precise temperature and humidity is critical. A typical Class 1000 cleanroom requires: Temperature 20±2°C, Relative Humidity 45±10%. Using our calculator at 20°C and 45% RH gives a dew point of 7.6°C - any surface below this temperature will experience condensation.</p>
+            <h3>案例1：洁净室设计</h3>
+            <p>半导体洁净室需要精确控制温湿度。典型千级洁净室要求：温度20±2°C，相对湿度45±10%。在20°C和45%RH条件下，本计算器得出露点为7.6°C——任何低于此温度的表面都会产生凝水。</p>
             
-            <h3>Case 2: Industrial Dehumidification</h3>
-            <p>A warehouse in Houston (altitude ~15m, summer conditions: 32°C, 80% RH) has a dew point of 28°C. To prevent moisture damage, the air conditioning system must keep all surfaces above 28°C or use desiccant dehumidification.</p>
-            
-            <h3>Case 3: High-Altitude Data Centers</h3>
-            <p>A data center in Denver (altitude 1609m) operates at 85°F and 50% RH. The lower atmospheric pressure (84.6 kPa) affects cooling system performance. Our calculator shows the actual conditions differ significantly from sea-level calculations.</p>
+            <h3>案例2：工业除湿</h3>
+            <p>某仓库位于成都（海拔约500m，夏季条件：32°C，80%RH），露点为28°C。要防止潮湿损害，空调系统必须使所有表面保持在28°C以上，或使用转轮除湿机。</p>
           </div>
 
-          {/* Disclaimer */}
           <div className="disclaimer">
-            <strong>⚠️ Disclaimer:</strong> All calculations on this website are for reference only. 
-            Do not use these results as the final basis for engineering design or construction. 
-            Please consult a licensed professional engineer for actual engineering decisions.
+            <strong>⚠️ 免责声明：</strong>所有计算结果仅供参照之用。请勿将计算结果作为工程设计或施工的最终依据。
           </div>
         </div>
       </main>
 
       <footer>
         <div className="container">
-          <p>© 2026 ProEngineerCalc. All rights reserved.</p>
+          <p>© 2026 工程师计算器</p>
         </div>
       </footer>
     </>

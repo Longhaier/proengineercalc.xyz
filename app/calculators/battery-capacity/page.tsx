@@ -20,27 +20,27 @@ export default function BatteryCapacity() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/electrical">Electrical</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/electrical">⚡ 电气工程</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>Battery Capacity Calculator</h1>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>蓄电池容量计算器</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Load Power (W)</label><input type="number" value={power} onChange={(e) => setPower(e.target.value)} /></div>
-            <div className="form-group"><label>Backup Hours</label><input type="number" value={hours} onChange={(e) => setHours(e.target.value)} /></div>
-            <div className="form-group"><label>Battery Voltage (V)</label><input type="number" value={voltage} onChange={(e) => setVoltage(e.target.value)} /></div>
-            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>Calculate</button>
+            <div className="form-group"><label>负载功率 (W)</label><input type="number" value={power} onChange={(e) => setPower(e.target.value)} /></div>
+            <div className="form-group"><label>备用时间 (小时)</label><input type="number" value={hours} onChange={(e) => setHours(e.target.value)} /></div>
+            <div className="form-group"><label>电池电压 (V)</label><input type="number" value={voltage} onChange={(e) => setVoltage(e.target.value)} /></div>
+            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>计算</button>
             {result && (
               <div className="result-group">
-                <div className="result-item"><span className="result-label">Energy Required</span><span className="result-value">{result.wh} Wh</span></div>
-                <div className="result-item"><span className="result-label">Battery Capacity</span><span className="result-value">{result.ah} Ah</span></div>
+                <div className="result-item"><span className="result-label">所需能量</span><span className="result-value">{result.wh} Wh</span></div>
+                <div className="result-item"><span className="result-label">电池容量</span><span className="result-value">{result.ah} Ah</span></div>
               </div>
             )}
           </div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> Reference only.</div>
+          <div className="disclaimer"><strong>免责声明：</strong>仅供参考。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

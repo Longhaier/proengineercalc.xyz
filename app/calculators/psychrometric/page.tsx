@@ -48,34 +48,34 @@ export default function Psychrometric() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/hvac">HVAC</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/hvac">🌡️ 暖通空调</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{fontSize:'1.75rem',fontWeight:700,margin:'2rem 0 1rem'}}>Psychrometric Calculator</h1>
+          <h1 style={{fontSize:'1.75rem',fontWeight:700,margin:'2rem 0 1rem'}}>湿空气性质计算器</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Calculation Mode</label>
+            <div className="form-group"><label>计算模式</label>
               <select value={mode} onChange={(e)=>setMode(e.target.value)}>
-                <option value="enthalpy">Calculate from T+RH</option>
-                <option value="reverse">Calculate T from Enthalpy</option>
+                <option value="enthalpy">根据温度+湿度计算</option>
+                <option value="reverse">根据焓值反算温度</option>
               </select>
             </div>
-            <div className="form-group"><label>Temperature (°C)</label><input type="number" value={temp} onChange={(e)=>setTemp(e.target.value)}/></div>
-            <div className="form-group"><label>Relative Humidity (%)</label><input type="number" value={humidity} onChange={(e)=>setHumidity(e.target.value)}/></div>
-            <div className="form-group"><label>Atmospheric Pressure (kPa)</label><input type="number" value={pressure} onChange={(e)=>setPressure(e.target.value)}/></div>
-            <button onClick={mode==='enthalpy'?calculate:calculateFromEnthalpy} style={{width:'100%',padding:'1rem',background:'var(--primary)',color:'white',border:'none',borderRadius:'8px'}}>Calculate</button>
+            <div className="form-group"><label>干球温度 (°C)</label><input type="number" value={temp} onChange={(e)=>setTemp(e.target.value)}/></div>
+            <div className="form-group"><label>相对湿度 (%)</label><input type="number" value={humidity} onChange={(e)=>setHumidity(e.target.value)}/></div>
+            <div className="form-group"><label>大气压力 (kPa)</label><input type="number" value={pressure} onChange={(e)=>setPressure(e.target.value)}/></div>
+            <button onClick={mode==='enthalpy'?calculate:calculateFromEnthalpy} style={{width:'100%',padding:'1rem',background:'var(--primary)',color:'white',border:'none',borderRadius:'8px'}}>计算</button>
             {result && !result.error && (
               <div className="result-group">
-                {result.h && <div className="result-item"><span className="result-label">Enthalpy</span><span className="result-value">{result.h} kJ/kg</span></div>}
-                {result.W && <div className="result-item"><span className="result-label">Humidity Ratio</span><span className="result-value">{result.W} g/kg</span></div>}
-                {result.Td && <div className="result-item"><span className="result-label">Dew Point</span><span className="result-value">{result.Td} °C</span></div>}
-                {result.temp && <div className="result-item"><span className="result-label">Temperature</span><span className="result-value">{result.temp} °C</span></div>}
+                {result.h && <div className="result-item"><span className="result-label">焓值</span><span className="result-value">{result.h} kJ/kg</span></div>}
+                {result.W && <div className="result-item"><span className="result-label">含湿量</span><span className="result-value">{result.W} g/kg</span></div>}
+                {result.Td && <div className="result-item"><span className="result-label">露点</span><span className="result-value">{result.Td} °C</span></div>}
+                {result.temp && <div className="result-item"><span className="result-label">温度</span><span className="result-value">{result.temp} °C</span></div>}
               </div>
             )}
           </div>
           <div className="content-section">
-            <h2>Formula and Principles</h2>
-            <p>Psychrometrics studies the thermodynamic properties of gas-vapor mixtures. The key relationships are:</p>
+            <h2>公式与原理</h2>
+            <p>湿空气性质是暖通空调设计的基础参数。</p>
             <div className="formula-box">
               Ps = 0.61078 × exp(17.27T/(T+237.3))<br/>
               Pv = Ps × RH/100<br/>
@@ -84,28 +84,23 @@ export default function Psychrometric() {
             </div>
           </div>
           <div className="content-section">
-            <h2>User Guide</h2>
+            <h2>使用说明</h2>
             <ol>
-              <li>Select calculation mode</li>
-              <li>Enter temperature and relative humidity</li>
-              <li>Adjust pressure if needed (default: 101.325 kPa)</li>
-              <li>Click Calculate to get all psychrometric properties</li>
+              <li>选择计算模式</li>
+              <li>输入温度和相对湿度</li>
+              <li>根据需要调整压力（默认：101.325 kPa）</li>
+              <li>点击计算获取所有湿空气参数</li>
             </ol>
           </div>
           <div className="content-section">
-            <h2>FAQ</h2>
-            <div className="faq-item"><p className="faq-question">What is enthalpy?</p><p className="faq-answer">Enthalpy is the total heat content of air per unit mass, measured in kJ/kg. It combines sensible heat and latent heat from water vapor.</p></div>
-            <div className="faq-item"><p className="faq-question">Why does pressure matter?</p><p className="faq-answer">At higher altitudes, lower pressure reduces air's moisture capacity. This affects all psychrometric calculations.</p></div>
+            <h2>常见问题</h2>
+            <div className="faq-item"><p className="faq-question">什么是焓值？</p><p className="faq-answer">焓值是空气的总热量，单位 kJ/kg，由显热和潜热组成。</p></div>
+            <div className="faq-item"><p className="faq-question">为什么压力会影响计算？</p><p className="faq-answer">海拔越高，气压越低，空气的持湿能力越弱，所有湿空气参数都会受影响。</p></div>
           </div>
-          <div className="content-section">
-            <h2>Related Cases</h2>
-            <p><strong>Case 1:</strong> A data center at 25°C, 50% RH has enthalpy of 50.4 kJ/kg. This determines cooling coil load.</p>
-            <p><strong>Case 2:</strong> Industrial drying process requires air at 80°C with 10% RH, giving enthalpy of 110 kJ/kg.</p>
-          </div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> All calculations are for reference only.</div>
+          <div className="disclaimer"><strong>免责声明：</strong>所有计算结果仅供参照。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

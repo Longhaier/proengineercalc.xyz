@@ -25,23 +25,23 @@ export default function FlowConversion() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/fluid">Fluid</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/fluid">💧 流体力学</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{fontSize:'1.75rem',fontWeight:700,margin:'2rem 0 1rem'}}>Flow Rate Converter</h1>
+          <h1 style={{fontSize:'1.75rem',fontWeight:700,margin:'2rem 0 1rem'}}>流量单位换算</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Value</label><input type="number" value={value} onChange={(e)=>setValue(e.target.value)}/></div>
-            <div className="form-group"><label>From Unit</label>
+            <div className="form-group"><label>数值</label><input type="number" value={value} onChange={(e)=>setValue(e.target.value)}/></div>
+            <div className="form-group"><label>源单位</label>
               <select value={fromUnit} onChange={(e)=>setFromUnit(e.target.value)}>
-                <option value="lps">L/s (Liters per second)</option>
-                <option value="m3h">m³/h (Cubic meters per hour)</option>
-                <option value="gpm">GPM (Gallons per minute)</option>
-                <option value="cfm">CFM (Cubic feet per minute)</option>
-                <option value="lpm">LPM (Liters per minute)</option>
+                <option value="lps">L/s (升/秒)</option>
+                <option value="m3h">m³/h (立方米/小时)</option>
+                <option value="gpm">GPM (加仑/分钟)</option>
+                <option value="cfm">CFM (立方英尺/分钟)</option>
+                <option value="lpm">LPM (升/分钟)</option>
               </select>
             </div>
-            <button onClick={convert} style={{width:'100%',padding:'1rem',background:'var(--primary)',color:'white',border:'none',borderRadius:'8px'}}>Convert</button>
+            <button onClick={convert} style={{width:'100%',padding:'1rem',background:'var(--primary)',color:'white',border:'none',borderRadius:'8px'}}>换算</button>
             {result && (
               <div className="result-group">
                 <div className="result-item"><span className="result-label">L/s</span><span className="result-value">{result.lps}</span></div>
@@ -53,26 +53,26 @@ export default function FlowConversion() {
             )}
           </div>
           <div className="content-section">
-            <h2>Formula and Principles</h2>
-            <p>Flow rate conversion between different units:</p>
+            <h2>公式与原理</h2>
+            <p>流量单位之间的换算：</p>
             <div className="formula-box">1 m³/h = 0.27778 L/s<br/>1 GPM = 0.06309 L/s<br/>1 CFM = 0.47195 L/s</div>
           </div>
           <div className="content-section">
-            <h2>User Guide</h2>
+            <h2>使用说明</h2>
             <ol>
-              <li>Enter flow rate value</li>
-              <li>Select source unit</li>
-              <li>Click Convert to see all conversions</li>
+              <li>输入流量数值</li>
+              <li>选择源单位</li>
+              <li>点击换算查看所有结果</li>
             </ol>
           </div>
           <div className="content-section">
-            <h2>FAQ</h2>
-            <div className="faq-item"><p className="faq-question">Why different units?</p><p className="faq-answer">Different industries use different units. HVAC typically uses GPM or L/s, while process industries use m³/h.</p></div>
+            <h2>常见问题</h2>
+            <div className="faq-item"><p className="faq-question">为什么不同行业用不同单位？</p><p className="faq-answer">不同行业习惯不同。暖通通常用 GPM 或 L/s，工艺行业通常用 m³/h。</p></div>
           </div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> All calculations are for reference only.</div>
+          <div className="disclaimer"><strong>免责声明：</strong>所有计算结果仅供参照。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

@@ -2,34 +2,34 @@ import Link from 'next/link'
 
 export default function Fluid() {
   const calculators = [
-    { slug: 'pipe-pressure', title: 'Pipe Pressure Loss', desc: 'Calculate pressure drop in pipe systems' },
-    { slug: 'flow-conversion', title: 'Flow Rate Converter', desc: 'Convert between GPM, L/s, m3/h' },
-    { slug: 'reynolds', title: 'Reynolds Number Calculator', desc: 'Calculate Reynolds number for pipe flow' },
+    { slug: 'pipe-pressure', title: '管道压力损失计算器', desc: '计算管道系统的压力降' },
+    { slug: 'flow-conversion', title: '流量单位换算', desc: 'GPM、L/s、m³/h 之间互转' },
+    { slug: 'reynolds', title: '雷诺数计算器', desc: '计算管道流动的雷诺数' },
   ]
 
   return (
     <>
       <header className="header">
         <div className="container header-content">
-          <h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1>
-          <p className="tagline">Professional Engineering Calculator Toolbox</p>
+          <h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1>
+          <p className="tagline">专业工程师计算工具箱</p>
         </div>
       </header>
 
       <nav className="nav">
         <div className="container nav-inner">
-          <Link href="/">Home</Link>
-          <Link href="/calculators/hvac">HVAC</Link>
-          <Link href="/calculators/electrical">Electrical</Link>
-          <Link href="/calculators/fluid">Fluid</Link>
-          <Link href="/calculators/structure">Structure</Link>
-          <Link href="/terms">Terms</Link>
-          <Link href="/privacy">Privacy</Link>
+          <Link href="/">🏠 首页</Link>
+          <Link href="/calculators/hvac">🌡️ 暖通空调</Link>
+          <Link href="/calculators/electrical">⚡ 电气工程</Link>
+          <Link href="/calculators/fluid">💧 流体力学</Link>
+          <Link href="/calculators/structure">🏗️ 结构工程</Link>
+          <Link href="/terms">📄 使用条款</Link>
+          <Link href="/privacy">🔒 隐私政策</Link>
         </div>
       </nav>
 
       <main className="container">
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0' }}>Fluid Mechanics Calculators</h1>
+        <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0' }}>💧 流体力学计算器</h1>
         
         <div className="calculator-grid">
           {calculators.map((calc) => (
@@ -41,12 +41,11 @@ export default function Fluid() {
         </div>
 
         <div className="disclaimer">
-          <strong>Disclaimer:</strong> All calculations are for reference only. 
-          Do not use these results as the final basis for engineering design.
+          <strong>免责声明：</strong>所有计算结果仅供参照之用。请勿将计算结果作为工程设计或施工的最终依据。
         </div>
       </main>
 
-      <footer><div className="container"><p>2026 ProEngineerCalc. All rights reserved.</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器. 保留所有权利.</p></div></footer>
     </>
   )
 }

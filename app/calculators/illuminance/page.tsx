@@ -19,26 +19,26 @@ export default function Illuminance() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/electrical">Electrical</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/electrical">⚡ 电气工程</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>Illuminance Calculator</h1>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>照度计算器</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Room Length (m)</label><input type="number" value={length} onChange={(e) => setLength(e.target.value)} /></div>
-            <div className="form-group"><label>Room Width (m)</label><input type="number" value={width} onChange={(e) => setWidth(e.target.value)} /></div>
-            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>Calculate</button>
+            <div className="form-group"><label>房间长度 (m)</label><input type="number" value={length} onChange={(e) => setLength(e.target.value)} /></div>
+            <div className="form-group"><label>房间宽度 (m)</label><input type="number" value={width} onChange={(e) => setWidth(e.target.value)} /></div>
+            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>计算</button>
             {result && (
               <div className="result-group">
-                <div className="result-item"><span className="result-label">Area</span><span className="result-value">{result.area} m²</span></div>
-                <div className="result-item"><span className="result-label">Light Needed</span><span className="result-value">{result.lumens} lumens</span></div>
+                <div className="result-item"><span className="result-label">面积</span><span className="result-value">{result.area} m²</span></div>
+                <div className="result-item"><span className="result-label">所需光通量</span><span className="result-value">{result.lumens} lm</span></div>
               </div>
             )}
           </div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> Reference only.</div>
+          <div className="disclaimer"><strong>免责声明：</strong>仅供参考。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

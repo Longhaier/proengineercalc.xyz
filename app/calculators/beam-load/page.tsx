@@ -18,27 +18,27 @@ export default function BeamLoad() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/structure">Structure</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/structure">🏗️ 结构工程</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>Beam Load Calculator</h1>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '2rem 0 1rem' }}>梁荷载计算器</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Uniform Load (kN/m)</label><input type="number" value={load} onChange={(e) => setLoad(e.target.value)} /></div>
-            <div className="form-group"><label>Span (m)</label><input type="number" value={length} onChange={(e) => setLength(e.target.value)} /></div>
-            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>Calculate</button>
+            <div className="form-group"><label>均布荷载 (kN/m)</label><input type="number" value={load} onChange={(e) => setLoad(e.target.value)} /></div>
+            <div className="form-group"><label>跨度 (m)</label><input type="number" value={length} onChange={(e) => setLength(e.target.value)} /></div>
+            <button onClick={calculate} style={{ width: '100%', padding: '1rem', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px' }}>计算</button>
             {result && (
               <div className="result-group">
-                <div className="result-item"><span className="result-label">Max Moment</span><span className="result-value">{result.moment} kN·m</span></div>
-                <div className="result-item"><span className="result-label">Deflection</span><span className="result-value">{result.deflection} mm</span></div>
+                <div className="result-item"><span className="result-label">最大弯矩</span><span className="result-value">{result.moment} kN·m</span></div>
+                <div className="result-item"><span className="result-label">挠度</span><span className="result-value">{result.deflection} mm</span></div>
               </div>
             )}
           </div>
-          <div className="content-section"><h2>Formula</h2><div className="formula-box">M = wL²/8<br/>δ = wL³/384EI<br/>(Assume 200mm × 400mm beam)</div></div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> Reference only.</div>
+          <div className="content-section"><h2>公式</h2><div className="formula-box">M = wL²/8<br/>δ = wL³/384EI<br/>(假设 200mm × 400mm 梁)</div></div>
+          <div className="disclaimer"><strong>免责声明：</strong>仅供参考。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

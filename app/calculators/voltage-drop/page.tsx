@@ -53,79 +53,79 @@ export default function VoltageDrop() {
 
   return (
     <>
-      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">ProEngineerCalc</Link></h1></div></header>
-      <nav className="nav"><div className="container nav-inner"><Link href="/">Home</Link><Link href="/calculators/electrical">Electrical</Link></div></nav>
+      <header className="header"><div className="container header-content"><h1 className="logo"><Link href="/">🔧 工程师计算器</Link></h1></div></header>
+      <nav className="nav"><div className="container nav-inner"><Link href="/">🏠 首页</Link><Link href="/calculators/electrical">⚡ 电气工程</Link></div></nav>
       <main className="container">
         <div className="calculator-container">
-          <h1 style={{fontSize:'1.75rem',fontWeight:700,margin:'2rem 0 1rem'}}>Voltage Drop Calculator</h1>
+          <h1 style={{fontSize:'1.75rem',fontWeight:700,margin:'2rem 0 1rem'}}>电压降计算器</h1>
           <div className="calculator-form">
-            <div className="form-group"><label>Calculation Mode</label>
+            <div className="form-group"><label>计算模式</label>
               <select value={mode} onChange={(e)=>setMode(e.target.value)}>
-                <option value="vd">Calculate Voltage Drop</option>
-                <option value="current">Calculate Max Current</option>
-                <option value="size">Calculate Required Cable Size</option>
+                <option value="vd">计算电压降</option>
+                <option value="current">计算最大电流</option>
+                <option value="size">计算所需电缆截面积</option>
               </select>
             </div>
-            <div className="form-group"><label>System Voltage (V)</label><input type="number" value={voltage} onChange={(e)=>setVoltage(e.target.value)}/></div>
-            <div className="form-group"><label>Current (A) {mode==='current'?'':'*'}</label><input type="number" value={current} onChange={(e)=>setCurrent(e.target.value)}/></div>
-            <div className="form-group"><label>Circuit Length (m) - one way</label><input type="number" value={length} onChange={(e)=>setLength(e.target.value)}/></div>
-            <div className="form-group"><label>Conductor Size (mm²)</label>
+            <div className="form-group"><label>系统电压 (V)</label><input type="number" value={voltage} onChange={(e)=>setVoltage(e.target.value)}/></div>
+            <div className="form-group"><label>电流 (A) {mode==='current'?'':'*'}</label><input type="number" value={current} onChange={(e)=>setCurrent(e.target.value)}/></div>
+            <div className="form-group"><label>线路长度 (m) - 单程</label><input type="number" value={length} onChange={(e)=>setLength(e.target.value)}/></div>
+            <div className="form-group"><label>导体截面积 (mm²)</label>
               <select value={size} onChange={(e)=>setSize(e.target.value)}>
                 <option value="1.5">1.5 mm²</option><option value="2.5">2.5 mm²</option><option value="4">4 mm²</option><option value="6">6 mm²</option><option value="10">10 mm²</option><option value="16">16 mm²</option><option value="25">25 mm²</option>
               </select>
             </div>
-            <div className="form-group"><label>Material</label>
+            <div className="form-group"><label>材质</label>
               <select value={material} onChange={(e)=>setMaterial(e.target.value)}>
-                <option value="copper">Copper</option><option value="aluminum">Aluminum</option>
+                <option value="copper">铜</option><option value="aluminum">铝</option>
               </select>
             </div>
-            <button onClick={calculate} style={{width:'100%',padding:'1rem',background:'var(--primary)',color:'white',border:'none',borderRadius:'8px'}}>Calculate</button>
+            <button onClick={calculate} style={{width:'100%',padding:'1rem',background:'var(--primary)',color:'white',border:'none',borderRadius:'8px'}}>计算</button>
             {result && (
               <div className="result-group">
-                {result.vd && <div className="result-item"><span className="result-label">Voltage Drop</span><span className="result-value">{result.vd} V ({result.percent}%)</span></div>}
-                {result.final && <div className="result-item"><span className="result-label">Voltage at Load</span><span className="result-value">{result.final} V</span></div>}
-                {result.maxCurrent && <div className="result-item"><span className="result-label">Max Current (3%)</span><span className="result-value">{result.maxCurrent} A</span></div>}
-                {result.minArea && <div className="result-item"><span className="result-label">Min Area Required</span><span className="result-value">{result.minArea} mm²</span></div>}
-                {result.recommended && <div className="result-item"><span className="result-label">Recommended Size</span><span className="result-value">{result.recommended} mm²</span></div>}
+                {result.vd && <div className="result-item"><span className="result-label">电压降</span><span className="result-value">{result.vd} V ({result.percent}%)</span></div>}
+                {result.final && <div className="result-item"><span className="result-label">负载端电压</span><span className="result-value">{result.final} V</span></div>}
+                {result.maxCurrent && <div className="result-item"><span className="result-label">最大允许电流 (3%)</span><span className="result-value">{result.maxCurrent} A</span></div>}
+                {result.minArea && <div className="result-item"><span className="result-label">最小所需截面积</span><span className="result-value">{result.minArea} mm²</span></div>}
+                {result.recommended && <div className="result-item"><span className="result-label">推荐截面积</span><span className="result-value">{result.recommended} mm²</span></div>}
               </div>
             )}
           </div>
           <div className="content-section">
-            <h2>Formula and Principles</h2>
-            <p>Voltage drop occurs when current flows through conductors due to their resistance. IEEE and NEC standards recommend maximum 3% voltage drop for branch circuits.</p>
+            <h2>公式与原理</h2>
+            <p>电流流过导体时因电阻产生电压降。IEEE和NEC标准建议分支电路最大电压降不超过3%。</p>
             <div className="formula-box">
               R = ρ × L × 2 / A<br/>
               VD = I × R<br/><br/>
-              Where:<br/>
-              ρ = Resistivity (Ω·mm²/m)<br/>
-              L = Length (m)<br/>
-              A = Cross-section (mm²)
+              其中:<br/>
+              ρ = 电阻率 (Ω·mm²/m)<br/>
+              L = 长度 (m)<br/>
+              A = 截面积 (mm²)
             </div>
           </div>
           <div className="content-section">
-            <h2>User Guide</h2>
+            <h2>使用说明</h2>
             <ol>
-              <li>Select calculation mode based on what you need</li>
-              <li>Enter system voltage (230V, 400V common)</li>
-              <li>Enter load current or circuit length</li>
-              <li>Select conductor material and size</li>
-              <li>Click Calculate to see results</li>
+              <li>选择计算模式</li>
+              <li>输入系统电压（常见230V、400V）</li>
+              <li>输入负载电流或线路长度</li>
+              <li>选择导体材质和截面积</li>
+              <li>点击计算查看结果</li>
             </ol>
           </div>
           <div className="content-section">
-            <h2>FAQ</h2>
-            <div className="faq-item"><p className="faq-question">Why 3% limit?</p><p className="faq-answer">3% is the maximum recommended voltage drop for efficient operation. Total drop including feeders should not exceed 5%.</p></div>
-            <div className="faq-item"><p className="faq-question">Copper vs Aluminum?</p><p className="faq-answer">Copper has lower resistivity (0.0175 vs 0.0283 Ω·mm²/m), so smaller copper cables can carry the same current.</p></div>
+            <h2>常见问题</h2>
+            <div className="faq-item"><p className="faq-question">为什么是3%？</p><p className="faq-answer">3%是保证设备正常工作的最大电压降。总电压降（含干线）不应超过5%。</p></div>
+            <div className="faq-item"><p className="faq-question">铜和铝哪个好？</p><p className="faq-answer">铜的电阻率更低（0.0175 vs 0.0283 Ω·mm²/m），所以铜电缆可以用更小的截面积承载相同的电流。</p></div>
           </div>
           <div className="content-section">
-            <h2>Related Cases</h2>
-            <p><strong>Case 1:</strong> 100m circuit, 20A load, 2.5mm² copper at 230V: VD = 2.77V (1.2%) - OK</p>
-            <p><strong>Case 2:</strong> Same circuit with 1.5mm²: VD = 4.6V (2%) - OK but close to limit</p>
+            <h2>案例</h2>
+            <p><strong>案例1：</strong>100m线路，20A负载，2.5mm²铜芯230V：VD = 2.77V (1.2%) - 合格</p>
+            <p><strong>案例2：</strong>同样线路用1.5mm²：VD = 4.6V (2%) - 合格但接近限值</p>
           </div>
-          <div className="disclaimer"><strong>Disclaimer:</strong> All calculations are for reference only.</div>
+          <div className="disclaimer"><strong>免责声明：</strong>所有计算结果仅供参照。</div>
         </div>
       </main>
-      <footer><div className="container"><p>2026 ProEngineerCalc</p></div></footer>
+      <footer><div className="container"><p>© 2026 工程师计算器</p></div></footer>
     </>
   )
 }

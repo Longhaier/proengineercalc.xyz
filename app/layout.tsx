@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
   title: '工程师计算器 - 专业工程师计算工具箱',
@@ -30,7 +29,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192.png" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7465624411296700" crossOrigin="anonymous"></script>
       </head>
-      <body>{children}<Analytics /></body>
+      <body>{children}</body>
     </html>
   )
 }
