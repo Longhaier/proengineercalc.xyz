@@ -5,6 +5,7 @@ export default function Structure() {
     { slug: 'concrete-mix', title: '混凝土配比计算器', desc: '计算混凝土配合比' },
     { slug: 'beam-load', title: '梁荷载计算器', desc: '计算梁的挠度和应力' },
     { slug: 'unit-converter', title: '单位换算器', desc: '工程单位之间的换算' },
+    { slug: 'steel-weight', title: '钢材重量计算器', desc: '计算各类型钢材的重量' },
   ]
 
   return (

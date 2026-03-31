@@ -8,7 +8,7 @@ export default function FlowConversion() {
   const [fromUnit, setFromUnit] = useState('m3h')
   const [result, setResult] = useState<any>(null)
 
-  const rates: Record<string, number> = { lps: 1, m3h: 0.277778, gpm: 0.0630902, cfm: 0.471947, lpm: 60 }
+  const rates: Record<string, number> = { lps: 1, m3h: 0.277778, gpm: 0.0630902, cfm: 0.471947, lpm: 1/60 }
 
   const convert = () => {
     const v = parseFloat(value)

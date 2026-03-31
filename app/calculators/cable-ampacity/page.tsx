@@ -11,14 +11,21 @@ export default function CableAmpacity() {
   const [result, setResult] = useState<number | null>(null)
 
   const calculate = () => {
-    const baseAmpacity = conductorType === 'copper' ? 15 : 12
-    const methodFactors: Record<string, number> = {
-      'A1': 0.80, 'A2': 0.80, 'B1': 0.85, 'B2': 0.85,
-      'C': 0.90, 'D': 0.90
+    const copperBase: Record<number, number> = {
+      1.5: 15.5, 2.5: 21, 4: 28, 6: 36, 10: 50, 16: 68, 25: 89, 35: 110, 50: 134, 70: 171, 95: 207, 120: 239
     }
-    const tempFactor = temp <= 30 ? 1.0 : 1 - (temp - 30) * 0.04
-    
-    const ampacity = size * baseAmpacity * (methodFactors[installMethod] || 1) * tempFactor
+    const aluminumBase: Record<number, number> = {
+      1.5: 12, 2.5: 16.5, 4: 22, 6: 28, 10: 39, 16: 53, 25: 70, 35: 86, 50: 104, 70: 133, 95: 161, 120: 186
+    }
+    const methodFactors: Record<string, number> = {
+      'A1': 0.77, 'A2': 0.80, 'B1': 1.0, 'B2': 0.95, 'C': 1.15, 'D': 1.08
+    }
+    const baseTable = conductorType === 'copper' ? copperBase : aluminumBase
+    const sizes = Object.keys(baseTable).map(Number)
+    const nearest = sizes.reduce((a, b) => Math.abs(b - size) < Math.abs(a - size) ? b : a)
+    const baseAmp = baseTable[nearest]
+    const tempFactor = temp <= 30 ? 1.0 : Math.sqrt((70 - temp) / (70 - 30))
+    const ampacity = baseAmp * (methodFactors[installMethod] || 1) * tempFactor
     setResult(Math.round(ampacity * 10) / 10)
   }
 

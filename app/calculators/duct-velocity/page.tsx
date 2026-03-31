@@ -15,23 +15,24 @@ export default function DuctVelocity() {
     const Q = parseFloat(flowRate) / 3600
     const d = parseFloat(diameter) / 1000
     const A = Math.PI * Math.pow(d/2, 2)
-    setResult({ velocity: (Q/A*100).toFixed(1), velocityFPM: (Q/A*196.85).toFixed(0), area: (A*1e6).toFixed(0) })
+    const v = Q / A
+    setResult({ velocity: v.toFixed(2), velocityFPM: (v * 196.85).toFixed(0), area: (A*1e6).toFixed(0) })
   }
 
   const calculateFlowRate = () => {
     const d = parseFloat(diameter) / 1000
-    const v = parseFloat(flowRate) / 100
+    const v = parseFloat(flowRate)  // flowRate field reused for velocity input in this mode
     const A = Math.PI * Math.pow(d/2, 2)
     const Q = v * A * 3600
-    setResult({ flowRate: Q.toFixed(1), velocity: v.toFixed(1), area: (A*1e6).toFixed(0) })
+    setResult({ flowRate: Q.toFixed(1), velocity: v.toFixed(2), area: (A*1e6).toFixed(0) })
   }
 
   const calculateDiameter = () => {
     const Q = parseFloat(flowRate) / 3600
-    const v = parseFloat(diameter) / 100
+    const v = parseFloat(diameter)  // diameter field reused for velocity input in this mode
     const A = Q / v
     const d = Math.sqrt(4 * A / Math.PI) * 1000
-    setResult({ diameter: d.toFixed(0), velocity: v.toFixed(1), flowRate: parseFloat(flowRate).toFixed(1) })
+    setResult({ diameter: d.toFixed(0), velocity: v.toFixed(2), flowRate: parseFloat(flowRate).toFixed(1) })
   }
 
   const calculate = () => {

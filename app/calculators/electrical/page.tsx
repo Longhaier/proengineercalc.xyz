@@ -7,6 +7,8 @@ export default function Electrical() {
     { slug: 'cable-ampacity', title: '电缆载流量计算器', desc: '计算电缆的安全载流量' },
     { slug: 'illuminance', title: '照度计算器', desc: '计算室内照明水平' },
     { slug: 'battery-capacity', title: '蓄电池容量计算器', desc: '计算备用电源的电池容量' },
+    { slug: 'transformer-capacity', title: '变压器容量计算器', desc: '根据用电负荷计算所需变压器容量' },
+    { slug: 'motor-current', title: '电机电流计算器', desc: '计算电机额定电流和启动电流' },
   ]
 
   return (

@@ -21,7 +21,7 @@ export default function Psychrometric() {
     const Pv = Ps * RH / 100
     const W = 0.622 * Pv / (P - Pv)
     const h = 1.005 * T + W * (2501 + 1.86 * T)
-    const Td = (237.3 * Math.log(Pv / 6.1078)) / (7.5 - Math.log(Pv / 6.1078))
+    const Td = (237.3 * Math.log10(Pv / 6.1078)) / (7.5 - Math.log10(Pv / 6.1078))
     
     setResult({ Ps: Ps.toFixed(3), Pv: Pv.toFixed(3), W: (W*1000).toFixed(2), h: h.toFixed(1), Td: Td.toFixed(1) })
   }
